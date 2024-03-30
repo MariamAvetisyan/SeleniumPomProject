@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="Test1">
+        <classes>
+            <class name="orgname.ft.LoginPositiveTest">
+                <methods>
+                    <include name="verifyNewUserSignup"/>
+                </methods>
+                <methods>
+                    <include name="verifyNewUserSignup"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="Test2">
+        <classes>
+            <class name="orgname.ft.LoginPositiveTest">
+                <methods>
+                    <include name="verifyNewUserSignup"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
