@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import static orgname.ft.setup.Configurations.LOGIN_URL;
+import static orgname.ft.setup.SeleniumWebDriver.getDriver;
 
 public class LoginPage extends BasePage {
     //locators
@@ -15,8 +16,8 @@ public class LoginPage extends BasePage {
 
     private final By NEW_USER_SIGNUP_TITLE = By.xpath("//*[text()='New User Signup!']");
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
+    public LoginPage() {
+        super(getDriver());
     }
 
     public void open() {

@@ -1,27 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
-    <test verbose="2" preserve-order="true"
-          name="Test1">
+<suite name="All Test Suite" parallel="tests">
+<!--    <groups>-->
+<!--        <run>-->
+<!--            <include name="myGroup"/>-->
+<!--        </run>-->
+<!--    </groups>-->
+    <test verbose="2" preserve-order="true"  name="Test1" parallel="true">
         <classes>
             <class name="orgname.ft.LoginPositiveTest">
+                <parameter name="browser" value="chrome"></parameter>
                 <methods>
                     <include name="verifyNewUserSignup"/>
-                </methods>
-                <methods>
-                    <include name="verifyNewUserSignup"/>
+                    <include name="verifyNewUserSignup1"/>
+                    <include name="verifyNewUserSignup4"/>
                 </methods>
             </class>
         </classes>
     </test>
-    <test verbose="2" preserve-order="true"
-          name="Test2">
+    <test verbose="2" preserve-order="true"  name="Test2" parallel="false">
         <classes>
             <class name="orgname.ft.LoginPositiveTest">
+                <parameter name="browser" value="edge"></parameter>
                 <methods>
                     <include name="verifyNewUserSignup"/>
+                    <include name="verifyNewUserSignup1"/>
+                    <include name="verifyNewUserSignup4"/>
                 </methods>
             </class>
         </classes>
     </test>
+<!--    <test verbose="2" preserve-order="true"-->
+<!--          name="Test2">-->
+<!--        <classes>-->
+<!--            <class name="orgname.ft.LoginPositiveTest">-->
+<!--                <methods>-->
+<!--                    <include name="verifyNewUserSignup"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>

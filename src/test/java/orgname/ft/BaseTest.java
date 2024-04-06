@@ -7,6 +7,8 @@ import org.testng.annotations.*;
 import orgname.ft.objects.BrowserEnum;
 import orgname.ft.setup.SeleniumWebDriver;
 
+import static orgname.ft.setup.SeleniumWebDriver.quitDriver;
+
 public class BaseTest {
     WebDriver driver;
 
@@ -27,14 +29,17 @@ public class BaseTest {
 
 
     @BeforeMethod
-    public void openBrowser() {
+    @Parameters("browser")
+    public void openBrowser(@Optional("chrome") String browser) {
         System.out.println("Opening browser");
-        driver = SeleniumWebDriver.getDriver(BrowserEnum.CHROME);
+        SeleniumWebDriver.setDriver(BrowserEnum.valueOf(browser.toUpperCase()));
+        driver = SeleniumWebDriver.getDriver();
     }
 
     @AfterMethod
     public void closeBrowser() {
         System.out.println("Closing browser");
+        quitDriver();
     }
 
 

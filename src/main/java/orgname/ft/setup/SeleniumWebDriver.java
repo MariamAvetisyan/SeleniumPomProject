@@ -8,24 +8,31 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import orgname.ft.objects.BrowserEnum;
 
 public class SeleniumWebDriver {
+    private static final ThreadLocal<WebDriver> driverThread = new ThreadLocal<>();
 
-    public static WebDriver getDriver(BrowserEnum browser) {
-        WebDriver driver = null;
+    public static WebDriver getDriver() {
+        return driverThread.get();
+    }
 
+    public static void setDriver(BrowserEnum browser) {
         switch (browser) {
             case CHROME -> {
                 WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
+                driverThread.set(new ChromeDriver());
             }
             case FIREFOX -> {
                 WebDriverManager.firefoxdriver().setup();
-                driver = new FirefoxDriver();
+                driverThread.set(new FirefoxDriver());
             }
             case EDGE -> {
                 WebDriverManager.edgedriver().setup();
-                driver = new EdgeDriver();
+                driverThread.set(new EdgeDriver());
             }
         }
-        return driver;
+    }
+
+    public static void quitDriver() {
+        getDriver().quit();
+        driverThread.remove();
     }
 }
